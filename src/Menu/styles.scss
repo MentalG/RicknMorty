@@ -1,0 +1,20 @@
+.menu_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    width: 100%;
+    transition: ease-out 0.3s;
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 40%;
+    }
+}
+
+.menu_wrapper:hover {
+    backdrop-filter: invert(20%);
+    transition: ease-out 0.3s;
+}
