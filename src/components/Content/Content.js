@@ -9,7 +9,7 @@ import './styles.scss';
 
 const Content = (props) => {
   const [page, setPage] = useState(1);
-  const { pagination, characters } = props;
+  const { pagination, characters, setFilters, filters } = props;
   const { data } = characters;
   const { info, posts } = data;
   const { isLoading } = useSelector(getPostsData);
@@ -18,9 +18,9 @@ const Content = (props) => {
   const renderSelectors = () => {
     return (
       <div className='filter_wrapper'>
-        <Selector />
-        <Selector />
-        <Selector />
+        <Selector setFilters={setFilters} filters={filters}/>
+        <Selector setFilters={setFilters} filters={filters}/>
+        <Selector setFilters={setFilters} filters={filters}/>
       </div>
     );
   };

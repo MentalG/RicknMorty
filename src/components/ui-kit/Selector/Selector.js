@@ -5,19 +5,31 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const Selector = props => {
-  const [age, setAge] = useState(0);
+  const { setFilters, filters } = props;
+  const [label, setLabel] = useState('None');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    const element = event.target;
+
+    setFilters({...filters, [element.name]: element.value})
+    setLabel(element.value);
   };
 
     return (
         <FormControl className='filter'>
-        <InputLabel id='name'>Name</InputLabel>
-        <Select labelId='name' value={age} onChange={handleChange}>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+        <InputLabel id='species'>Species</InputLabel>
+        <Select name='species' labelId='species' value={label} displayEmpty onChange={handleChange}>
+          <MenuItem value={''}>None</MenuItem>
+          <MenuItem value={'Human'}>Human</MenuItem>
+          <MenuItem value={'Alien'}>Alien</MenuItem>
+          <MenuItem value={'Humanoid'}>Humanoid</MenuItem>
+          <MenuItem value={'Animal'}>Animal</MenuItem>
+          <MenuItem value={'Robot'}>Robot</MenuItem>
+          <MenuItem value={'Cronenberg'}>Cronenberg</MenuItem>
+          <MenuItem value={'Mytholog'}>Mytholog</MenuItem>
+          <MenuItem value={'Disease'}>Disease</MenuItem>
+          <MenuItem value={'Poopybutthole'}>Poopybutthole</MenuItem>
+          <MenuItem value={'unknown'}>unknown</MenuItem>
         </Select>
       </FormControl>
     )

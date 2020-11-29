@@ -12,16 +12,19 @@ export default class RicknMortyService {
         return await res.json()
     }
 
-    getAllData = async (query) => {
+    getAllData = async (query, filters) => {
         try {
-            const res = await this.getResource(`/${query}/`)
+            let filtersQuery = `?`
+            Object.keys(filters).map(filter => filtersQuery += `${filter}=${filters[filter]}&`)
+            const res = await this.getResource(`/${query}/${filtersQuery}`)
             const data = {
                 info: res.info,
                 posts: []
             };
             
             for (let i = 1; i <= res.info.pages; i++) {
-                const post = await fetch(`${this._apiBase}/${query}/?page=${i}`);
+                const post = await fetch(`${this._apiBase}/${query}/${filtersQuery}page=${i}`);
+                console.log(`${this._apiBase}/${query}/${filtersQuery}&page=${i}`);
     
                 data.posts.push(...(await post.json()).results)
             }
