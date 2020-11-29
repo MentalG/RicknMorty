@@ -1,26 +1,20 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { getPostsData } from '../../store/selectors/post'
-import Content from '../../Content';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPostsData } from '../../store/selectors/post';
+import { getPosts } from '../../store/actions/post'
+import Content from '../../components/Content';
 
 const Characters = (props) => {
-    const data = useSelector(getPostsData);
-    
-    console.log(data);
+  const dispatch = useDispatch();
+  const data = useSelector(getPostsData);
 
   useEffect(() => {
-    // const fetching = async () => {
-    //     const data = await ricknMortyService.getAllData('location');
-    //     console.log(data)
-    // }
-    // fetching();
-  }, [])
-
-//   console.log(data)
+      dispatch(getPosts('character'))
+  }, [dispatch]);
 
   return (
     <div>
-      <Content />
+      <Content characters={data} pagination={10}/>
     </div>
   );
 };

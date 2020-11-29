@@ -5,15 +5,12 @@ const ricknMortyService = new RicknMortyService();
 
 export const getPostRequest = createAction('R:posts/get')
 export const getPostSuccess = createAction('S:posts/get')
-export const getPostFailure = createAction('F:images/get')
 
-export function getPosts() {
+export function getPosts(query) {
     return async (dispatch) => {
         try {
-            dispatch(getPostRequest);
-            const response = await ricknMortyService.getAllData();
-
-            console.log(response);
+            dispatch(getPostRequest());
+            const response = await ricknMortyService.getAllData(query);
 
             dispatch(getPostSuccess(response));
         } catch (error) {

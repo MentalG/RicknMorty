@@ -13,18 +13,22 @@ export default class RicknMortyService {
     }
 
     getAllData = async (query) => {
-        const res = await this.getResource(`/${query}/`)
-        const data = {
-            info: res.info,
-            posts: []
-        };
-        
-        for (let i = 1; i <= res.info.pages; i++) {
-            const post = await fetch(`${this._apiBase}/${query}/?page=${i}`);
-
-            data.posts.push(...(await post.json()).results)
+        try {
+            const res = await this.getResource(`/${query}/`)
+            const data = {
+                info: res.info,
+                posts: []
+            };
+            
+            for (let i = 1; i <= res.info.pages; i++) {
+                const post = await fetch(`${this._apiBase}/${query}/?page=${i}`);
+    
+                data.posts.push(...(await post.json()).results)
+            }
+    
+            return data
+        } catch (error) {
+            return error
         }
-
-        return data
     }
 }
