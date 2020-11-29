@@ -1,27 +1,28 @@
-import React from 'react'
-import { DataGrid } from '@material-ui/data-grid';
-import RicknMortyService from '../../api/services';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getPostsData } from '../../store/selectors/post'
+import Content from '../../Content';
 
-const Characters = props => {
-    const ricknMortyService = new RicknMortyService();
-    const data = {
-        rows: [{
-            id: "03fdd598-b276-5632-8436-811dda053e8c",
-            name: 'Alien Googah'
-        }],
-        columns: [{
-            field: 'name',
-            header: 'Name',
-            width: 120
-        }],
-    }
-    ricknMortyService.getAllData();
+const Characters = (props) => {
+    const data = useSelector(getPostsData);
+    
+    console.log(data);
 
-    return (
-        <div style={{ height: '100%', width: '100%' }}>
-        <DataGrid pagination {...data} />
-      </div>
-    )
-}
+  useEffect(() => {
+    // const fetching = async () => {
+    //     const data = await ricknMortyService.getAllData('location');
+    //     console.log(data)
+    // }
+    // fetching();
+  }, [])
 
-export default Characters
+//   console.log(data)
+
+  return (
+    <div>
+      <Content />
+    </div>
+  );
+};
+
+export default Characters;
