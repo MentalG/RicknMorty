@@ -15,7 +15,7 @@ const Characters = (props) => {
     status: '',
     gender: '',
   });
-
+  
   useEffect(() => {
     dispatch(getPosts('character', filters));
   }, [dispatch, filters]);
@@ -23,7 +23,7 @@ const Characters = (props) => {
   return (
     <div>
       <Content
-          info={data}
+          count={data.data.info?.count}
           posts={posts}
           pagination={10}
           setFilters={setFilters}

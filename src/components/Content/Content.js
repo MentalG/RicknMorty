@@ -17,12 +17,13 @@ const Content = (props) => {
     filters,
     selectors,
     isTable,
-    info,
+    count,
     posts,
     filterType,
   } = props;
   const { isLoading } = useSelector(getPostsData);
   const sortedPosts = posts?.slice(pagination * (page - 1), pagination * page);
+  const maxPages = Math.floor(count / pagination);
 
   const renderSelectors = () => {
     return (
@@ -59,7 +60,7 @@ const Content = (props) => {
       <Grid className='content' container={isTable ? true : false}>
         {isLoading ? <Loader /> : renderPosts()}
       </Grid>
-      <Pagination setPage={setPage} page={page} maxPage={info?.pages} />
+      <Pagination setPage={setPage} page={page} maxPages={maxPages} />
     </div>
   );
 };

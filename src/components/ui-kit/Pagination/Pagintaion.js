@@ -4,11 +4,12 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './styles.scss';
 
 const Pagintaion = (props) => {
-  const { setPage, page } = props;
+  const { setPage, page, maxPages } = props;
 
+  
   const clickHandler = (action) => {
     const nextPage = page === 1 && action === -1 ? 1 : action + page
-    // if(nextPage === maxPage) return
+    if(nextPage === maxPages + 2) return 
 
     setPage(nextPage)
   }

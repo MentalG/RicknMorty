@@ -21,7 +21,7 @@ const Episodes = props => {
     return (
       <div>
         <Content
-          info={data}
+          count={data.data.info?.count}
           posts={posts}
           pagination={25}
           setFilters={setFilters}
