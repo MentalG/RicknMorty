@@ -1,12 +1,13 @@
 .content_wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 97%;
   height: 90vh;
+  padding: 0px 20px;
 
   .setting_wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 100%;
 
     .filter_wrapper {
@@ -17,31 +18,30 @@
         padding: 0px 10px;
       }
     }
-
-    .pagination_wrapper {
-      display: flex;
-
-      .pagination {
-        padding: 0px 10px;
-      }
-    }
   }
 
   .content {
-    padding: 20px 30px;
+    padding: 20px 0px;
 
     .item {
-      padding: 10px 0px;
+      margin: 10px 0px;
       display: flex;
       align-items: center;
 
-      .item_image {
-        width: 150px;
-        height: 150px;
+      .info_container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
       }
 
       .item_info {
-          padding: 0px 10px;
+        padding: 0px 10px;
+      }
+
+      .live_indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
       }
     }
   }

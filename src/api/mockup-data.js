@@ -1,14 +1,14 @@
 export const characterSelectors = {
   species: [
-    'Human',
-    'Alien',
-    'Humanoid',
-    'Animal',
-    'Robot',
-    'Cronenberg',
-    'Mytholog',
-    'Disease',
-    'Poopybutthole',
+    'human',
+    'alien',
+    'humanoid',
+    'animal',
+    'robot',
+    'cronenberg',
+    'mytholog',
+    'disease',
+    'poopybutthole',
     'unknown',
   ],
   status: ['alive', 'dead', 'unknown'],
@@ -16,9 +16,7 @@ export const characterSelectors = {
 };
 
 export const episodeSelectors = {
-  species: [],
-  status: [],
-  gender: [],
+  name: ['name'],
 };
 
 export const locationSelectors = {

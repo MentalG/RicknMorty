@@ -3,50 +3,63 @@ import { useSelector } from 'react-redux';
 import { getPostsData } from '../../store/selectors/post';
 import Selector from '../ui-kit/Selector';
 import Pagination from '../ui-kit/Pagination';
-import Loader from '../ui-kit/Loader'
+import Loader from '../ui-kit/Loader';
+import Table from '../ui-kit/List';
+import List from '../ui-kit/Table';
 import Grid from '@material-ui/core/Grid';
 import './styles.scss';
 
 const Content = (props) => {
   const [page, setPage] = useState(1);
-  const { pagination, characters, setFilters, filters, selectors } = props;
-  const { data } = characters;
-  const { info, posts } = data;
+  const {
+    pagination,
+    setFilters,
+    filters,
+    selectors,
+    isTable,
+    info,
+    posts,
+    filterType,
+  } = props;
   const { isLoading } = useSelector(getPostsData);
   const sortedPosts = posts?.slice(pagination * (page - 1), pagination * page);
 
   const renderSelectors = () => {
     return (
       <div className='filter_wrapper'>
-          {Object.keys(filters).map((filter, key) => {
-            return (
-              <Selector setFilters={setFilters} filters={filters} filter={filter} selectors={selectors} key={key}/>
-            )
-          })}
+        {Object.keys(filters)?.map((filter) => {
+          return (
+            <Selector
+              setFilters={setFilters}
+              filters={filters}
+              filter={filter}
+              selectors={selectors}
+              key={filter}
+              filterType={filterType}
+            />
+          );
+        })}
       </div>
     );
   };
 
   const renderPosts = () => {
-    return sortedPosts?.map((post) => {
-      return (
-        <Grid item xs={4} className='item' key={post.id}>
-          <img src={post.image} alt='alt' className='item_image' />
-          <div className='item_info'>{`${post.name} ${post.species} ${post.status}`}</div>
-        </Grid>
-      );
-    });
+    return sortedPosts?.map((post) =>
+      isTable ? (
+        <Table post={post} key={post.name} />
+      ) : (
+        <List post={post} key={post.name} />
+      )
+    );
   };
 
   return (
     <div className='content_wrapper'>
-      <div className='setting_wrapper'>
-        {renderSelectors()}
-        <Pagination setPage={setPage} page={page} maxPage={info?.pages}/>
-      </div>
-      <Grid className='content' container>
+      <div className='setting_wrapper'>{renderSelectors()}</div>
+      <Grid className='content' container={isTable ? true : false}>
         {isLoading ? <Loader /> : renderPosts()}
       </Grid>
+      <Pagination setPage={setPage} page={page} maxPage={info?.pages} />
     </div>
   );
 };

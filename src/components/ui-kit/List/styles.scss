@@ -1,0 +1,18 @@
+.list_item {
+    display: flex;
+    padding: 20px 0px;
+
+    .item_image {
+        width: 150px;
+        height: 150px;
+        border-radius: 25px;
+      }
+
+    .item_info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0px 30px;
+    }
+}

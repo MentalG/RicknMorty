@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import './styles.scss';
 
 const Pagintaion = (props) => {
-  const { setPage, page, maxPage } = props;
+  const { setPage, page } = props;
 
   const clickHandler = (action) => {
     const nextPage = page === 1 && action === -1 ? 1 : action + page
