@@ -31,6 +31,7 @@ const Content = (props) => {
               setFilters={setFilters}
               filters={filters}
               selectors={selectors}
+              setPage={setPage}
             />
       </div>
     );

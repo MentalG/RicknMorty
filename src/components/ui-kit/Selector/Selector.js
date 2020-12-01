@@ -15,21 +15,24 @@ const useStyles = makeStyles((theme) => {
   });
 
 const Selector = (props) => {
-  const { filters, filter, selectors, setFilters } = props;
+  const { filters, filter, selectors, setFilters, setPage } = props;
   const [label, setLabel] = useState('None');
   const classes = useStyles();
+  const text = filter.charAt(0).toUpperCase() + filter.slice(1)
 
   const handleChange = (event) => {
     const element = event.target;
+    element.type = filters[filter].type
 
-    setFilters({ ...filters, [element.name]: { value: element.value } });
+    setPage(1);
+    setFilters({ ...filters, [element.name]: { value: element.value, type: element.type } });
     setLabel(element.value);
   };
 
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id={filter}>
-        {filter.charAt(0).toUpperCase() + filter.slice(1)}
+        {text}
       </InputLabel>
       <Select
         name={filter}

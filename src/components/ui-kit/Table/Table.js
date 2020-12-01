@@ -10,8 +10,10 @@ const Table = props => {
         <Grid className='table_item' item xs={12}>
         <div className='item_info'>
           {Object.keys(post).map((field, key) => {
+            const text = `${field.charAt(0).toUpperCase() + field.slice(1)}: ${post[field]} `
+
             return (
-              <Typography key={field + key} className={'table_item_text'}>{`${field.charAt(0).toUpperCase() + field.slice(1)}: ${post[field]} `}</Typography>
+              <Typography key={field + key} className={'table_item_text'}>{text}</Typography>
             );
           })}
         </div>

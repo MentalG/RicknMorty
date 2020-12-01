@@ -48,19 +48,22 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 const Input = (props) => {
-  const { filter, setFilters, filters } = props;
+  const { filter, setFilters, filters, setPage } = props;
   const classes = useStyles();
+  const text = filter.charAt(0).toUpperCase() + filter.slice(1)
 
   const handleChange = (event) => {
     const element = event.target;
+    element.type = filters[filter].type
 
-    setFilters({ ...filters, [element.name]: { value: element.value } });
+    setPage(1)
+    setFilters({ ...filters, [element.name]: { value: element.value, type: element.type } });
   };
 
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id={filter}>
-        {filter.charAt(0).toUpperCase() + filter.slice(1)}
+        {text}
       </InputLabel>
       <BootstrapInput name={filter} key={filter} onChange={handleChange} />
     </FormControl>

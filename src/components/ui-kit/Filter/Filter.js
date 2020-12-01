@@ -3,7 +3,7 @@ import Selector from '../Selector';
 import Input from '../Input';
 
 const Filter = (props) => {
-  const { setFilters, filters, selectors } = props;
+  const { setFilters, filters, selectors, setPage } = props;
 
   return (
     <>
@@ -15,6 +15,7 @@ const Filter = (props) => {
             filters={filters}
             selectors={selectors}
             setFilters={setFilters}
+            setPage={setPage}
           />
         ) : (
           <Input
@@ -22,6 +23,7 @@ const Filter = (props) => {
             filter={item}
             filters={filters}
             setFilters={setFilters}
+            setPage={setPage}
           />
         );
       })}

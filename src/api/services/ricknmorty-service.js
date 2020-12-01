@@ -15,7 +15,6 @@ export default class RicknMortyService {
     getAllData = async (query, filters) => {
         try {
             let filtersQuery = `?`
-            console.log(filters);
             Object.keys(filters).map(filter => filtersQuery += `${filter}=${filters[filter].value}&`)
             const res = await this.getResource(`/${query}/${filtersQuery.slice(0, -1)}`)
             const data = {
