@@ -37,16 +37,6 @@ const Content = (props) => {
     );
   };
 
-  // const renderPosts = () => {
-  //   return sortedPosts?.map((post, key) =>
-  //     isTable ? (
-  //       <Table post={post} key={post.name + key} />
-  //     ) : (
-  //       <List post={post} key={post.name + key} />
-  //     )
-  //   );
-  // };
-
   const renderPosts = () => {
     return (
       isTable ? (

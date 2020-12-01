@@ -14,21 +14,23 @@ const List = (props) => {
 
         return (
           <Grid className='list_item' item xs={4} key={post.name + key}>
-            {isImage ? (
-              <img alt='alt' src={post.image} className='item_image' />
-            ) : null}
-            <div className='item_info'>
-              {titles?.map((title, key) => {
-                return (
-                  <Typography key={title + key}>
-                    {title !== 'image'
-                      ? `${title.charAt(0).toUpperCase() + title.slice(1)} - ${
-                          post[title]
-                        }`
-                      : ``}
-                  </Typography>
-                );
-              })}
+            <div className='item_container'>
+              {isImage ? (
+                <img alt='alt' src={post.image} className='item_image' />
+              ) : null}
+              <div className='item_info'>
+                {titles?.map((title, key) => {
+                  return (
+                    <Typography key={title + key}>
+                      {title !== 'image'
+                        ? `${
+                            title.charAt(0).toUpperCase() + title.slice(1)
+                          } - ${post[title]}`
+                        : ``}
+                    </Typography>
+                  );
+                })}
+              </div>
             </div>
           </Grid>
         );

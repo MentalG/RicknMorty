@@ -29,3 +29,7 @@ export const dumpLocation = ({ data }) => {
     };
   });
 };
+
+export const dumpTitle = (data) => {
+  return data.map((title) => (title.charAt(0).toUpperCase() + title.slice(1)).split('_').join(' '));
+};
