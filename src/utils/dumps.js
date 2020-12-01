@@ -23,3 +23,15 @@ export const dumpCharacter = ({data}) => {
         })
     )
 }
+
+export const dumpLocation = ({data}) => {
+    return (
+        data.posts?.map(item => {
+            return ({
+                name: item.name,
+                type: item.type,
+                dimension: item.dimension
+            })
+        })
+    )
+}

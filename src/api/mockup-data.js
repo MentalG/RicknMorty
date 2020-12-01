@@ -20,7 +20,7 @@ export const episodeSelectors = {
 };
 
 export const locationSelectors = {
-  species: [],
-  status: [],
-  gender: [],
+  name: ['name'],
+  type: ['type'],
+  dimension: ['dimension']
 };

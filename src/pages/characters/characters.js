@@ -11,9 +11,18 @@ const Characters = (props) => {
   const data = useSelector(getPostsData);
   const posts = dumpCharacter(data)
   const [filters, setFilters] = useState({
-    species: '',
-    status: '',
-    gender: '',
+    species: {
+      value: '',
+      type: 'selector',
+    },
+    status: {
+      value: '',
+      type: 'selector',
+    },
+    gender: {
+      value: '',
+      type: 'selector',
+    },
   });
   
   useEffect(() => {
@@ -30,7 +39,6 @@ const Characters = (props) => {
           filters={filters}
           selectors={characterSelectors}
           isTable={true}
-          filterType={'selector'}
       />
     </div>
   );

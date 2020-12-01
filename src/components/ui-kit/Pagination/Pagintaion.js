@@ -5,7 +5,6 @@ import './styles.scss';
 
 const Pagintaion = (props) => {
   const { setPage, page, maxPages } = props;
-
   
   const clickHandler = (action) => {
     const nextPage = page === 1 && action === -1 ? 1 : action + page

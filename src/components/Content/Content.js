@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getPostsData } from '../../store/selectors/post';
-import Selector from '../ui-kit/Selector';
+import Filter from '../ui-kit/Filter';
 import Pagination from '../ui-kit/Pagination';
 import Loader from '../ui-kit/Loader';
 import Table from '../ui-kit/List';
@@ -19,7 +19,6 @@ const Content = (props) => {
     isTable,
     count,
     posts,
-    filterType,
   } = props;
   const { isLoading } = useSelector(getPostsData);
   const sortedPosts = posts?.slice(pagination * (page - 1), pagination * page);
@@ -28,18 +27,11 @@ const Content = (props) => {
   const renderSelectors = () => {
     return (
       <div className='filter_wrapper'>
-        {Object.keys(filters)?.map((filter) => {
-          return (
-            <Selector
+            <Filter
               setFilters={setFilters}
               filters={filters}
-              filter={filter}
               selectors={selectors}
-              key={filter}
-              filterType={filterType}
             />
-          );
-        })}
       </div>
     );
   };

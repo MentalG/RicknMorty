@@ -11,7 +11,10 @@ const Episodes = props => {
     const data = useSelector(getPostsData);
     const posts = dumpEpisode(data)
     const [filters, setFilters] = useState({
-      name: '',
+      name: {
+        value: '',
+        type: 'input'
+      },
     });
   
     useEffect(() => {
@@ -28,7 +31,6 @@ const Episodes = props => {
           filters={filters}
           selectors={episodeSelectors}
           isTable={false}
-          filterType={'input'}
         />
       </div>
     );
