@@ -30,7 +30,7 @@ const Episodes = props => {
           setFilters={setFilters}
           filters={filters}
           selectors={episodeSelectors}
-          isTable={false}
+          isTable={true}
         />
       </div>
     );

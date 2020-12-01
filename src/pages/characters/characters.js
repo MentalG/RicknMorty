@@ -38,7 +38,7 @@ const Characters = (props) => {
           setFilters={setFilters}
           filters={filters}
           selectors={characterSelectors}
-          isTable={true}
+          isTable={false}
       />
     </div>
   );

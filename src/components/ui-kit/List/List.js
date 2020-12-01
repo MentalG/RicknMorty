@@ -4,8 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import './styles.scss';
 
 const List = (props) => {
-  const { posts } = props;
+  const { posts, setModalInfo, setIsModalOpen } = props;
   const titles = posts ? Object.keys(posts[0]) : null;
+
+  const clickHandle = (post) => {
+    setModalInfo(post.id);
+    setIsModalOpen(true);
+  }
 
   return (
     <>
@@ -14,7 +19,7 @@ const List = (props) => {
 
         return (
           <Grid className='list_item' item xs={4} key={post.name + key}>
-            <div className='item_container'>
+            <div className='item_container' onClick={() => clickHandle(post)}>
               {isImage ? (
                 <img alt='alt' src={post.image} className='item_image' />
               ) : null}

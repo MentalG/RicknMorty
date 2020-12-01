@@ -11,6 +11,7 @@ export const dumpEpisode = ({ data }) => {
 export const dumpCharacter = ({ data }) => {
   return data.posts?.map((item) => {
     return {
+      id: item.id,
       name: item.name,
       status: item.status,
       species: item.species,
