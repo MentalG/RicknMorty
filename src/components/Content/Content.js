@@ -27,33 +27,45 @@ const Content = (props) => {
   const renderSelectors = () => {
     return (
       <div className='filter_wrapper'>
-            <Filter
-              setFilters={setFilters}
-              filters={filters}
-              selectors={selectors}
-              setPage={setPage}
-            />
+        <Filter
+          setFilters={setFilters}
+          filters={filters}
+          selectors={selectors}
+          setPage={setPage}
+        />
       </div>
     );
   };
 
+  // const renderPosts = () => {
+  //   return sortedPosts?.map((post, key) =>
+  //     isTable ? (
+  //       <Table post={post} key={post.name + key} />
+  //     ) : (
+  //       <List post={post} key={post.name + key} />
+  //     )
+  //   );
+  // };
+
   const renderPosts = () => {
-    return sortedPosts?.map((post, key) =>
+    return (
       isTable ? (
-        <Table post={post} key={post.name + key} />
+        <Table posts={sortedPosts} />
       ) : (
-        <List post={post} key={post.name + key} />
+        <List posts={sortedPosts} />
       )
-    );
+    )
   };
 
   return (
     <div className='content_wrapper'>
-      <div className='setting_wrapper'>{renderSelectors()}</div>
+      <div className='setting_wrapper'>
+        {renderSelectors()}
+        <div style={{padding: '0px 10px'}}><Pagination setPage={setPage} page={page} maxPages={maxPages} /></div>
+      </div>
       <Grid className='content' container={isTable ? true : false}>
         {isLoading ? <Loader /> : renderPosts()}
       </Grid>
-      <Pagination setPage={setPage} page={page} maxPages={maxPages} />
     </div>
   );
 };

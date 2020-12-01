@@ -1,9 +1,28 @@
 .table_item {
-    .item_info {
-        display: flex;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #dddcdc;
+  border-radius: 0px 0px 10px 10px;
 
-        .table_item_text {
-            margin-right: 10px;
-        }
+  .table_column {
+    width: 100%;
+
+    .table_column_title {
+      background: #f1f1f1;
+      border-bottom: 1px solid #dddcdc;
     }
+
+
+    .table_text {
+      padding: 10px 10px;
+    }
+  }
+
+  .item_info {
+    display: flex;
+
+    .table_item_text {
+      margin-right: 10px;
+    }
+  }
 }

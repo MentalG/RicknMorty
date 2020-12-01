@@ -1,24 +1,31 @@
-import React from 'react'
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import './styles.scss'
+import './styles.scss';
 
-const Table = props => {
-    const { post } = props;
-    
-    return (
-        <Grid className='table_item' item xs={12}>
-        <div className='item_info'>
-          {Object.keys(post).map((field, key) => {
-            const text = `${field.charAt(0).toUpperCase() + field.slice(1)}: ${post[field]} `
+const Table = (props) => {
+  const { posts } = props;
+  const titles = posts ? Object.keys(posts[0]) : null;
+  // console.log(titles);
 
-            return (
-              <Typography key={field + key} className={'table_item_text'}>{text}</Typography>
-            );
-          })}
-        </div>
-      </Grid>
-    )
-}
+  return (
+    <Grid className='table_item' item xs={12}>
+      {titles?.map((title, key) => {
+        return (
+          <div key={key + title} className={'table_column'}>
+            <Typography className='table_column_title table_text'>{title}</Typography>
+            {posts?.map((post, key) => {
+              return (
+                <Typography key={key} className={'table_text'}>
+                  {post.name}
+                </Typography>
+              );
+            })}
+          </div>
+        );
+      })}
+    </Grid>
+  );
+};
 
-export default Table
+export default Table;

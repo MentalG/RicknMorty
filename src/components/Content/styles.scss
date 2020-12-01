@@ -8,6 +8,7 @@
   .setting_wrapper {
     display: flex;
     justify-content: flex-start;
+    align-items: baseline;
     width: 100%;
 
     .filter_wrapper {
@@ -21,7 +22,7 @@
   }
 
   .content {
-    padding: 20px 0px;
+    padding: 10px 0px;
 
     .item {
       margin: 10px 0px;
