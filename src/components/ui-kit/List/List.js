@@ -27,7 +27,7 @@ const List = (props) => {
                 {titles?.map((title, key) => {
                   return (
                     <Typography key={title + key}>
-                      {title !== 'image'
+                      {title !== 'image' && title !== 'id'
                         ? `${
                             title.charAt(0).toUpperCase() + title.slice(1)
                           } - ${post[title]}`

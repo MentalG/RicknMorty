@@ -38,7 +38,7 @@ const Locations = props => {
           setFilters={setFilters}
           filters={filters}
           selectors={locationSelectors}
-          isTable={false}
+          isTable={true}
           filterType={'input'}
         />
       </div>
