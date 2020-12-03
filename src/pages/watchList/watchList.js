@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Typography } from '@material-ui/core';
-import { getFromStorage, putInStorage, updateStorage } from '../../utils/localstorage';
+import {
+  getFromStorage,
+  putInStorage,
+  updateStorage,
+} from '../../utils/localstorage';
 import './styles.scss';
 
 const WatchList = (props) => {
@@ -8,23 +12,34 @@ const WatchList = (props) => {
 
   useEffect(() => {
     updateStorage('list', list);
-  }, [list])
+  }, [list]);
 
   const submitHandle = (e) => {
     e.preventDefault();
     const { value } = e.target[0];
 
-    !!list ? setList([...list, {episode: value, type: ''}]) : putInStorage('list', [{episode: value, type: ''}])
+    !!list
+      ? setList([...list, { episode: value, type: '' }])
+      : putInStorage('list', [{ episode: value, type: '' }]);
   };
 
   const clickHandle = (key, event) => {
-    console.log(event)
-    console.log(list[key])
-  }
+    switch (event) {
+      case 'delete':
+        setList(list.filter((item, index) => index !== key));
+        break;
+      default:
+        const newList = [...list];
+        newList[key].type = event;
+        setList(newList);
+        break;
+    }
+  };
 
   return (
     <div className='watchList_container'>
       <form
+        id='submitForm'
         className='watchList_form'
         onSubmit={(e) => submitHandle(e)}
       >
@@ -40,14 +55,42 @@ const WatchList = (props) => {
       </form>
       <ul className='watchList_items_container'>
         {list?.map((item, key) => {
+          console.log(item);
           return (
             <li key={item.episode + key}>
-              <Typography>{item.episode}</Typography>
+              <Typography
+                className={`item_text ${
+                  item.type === 'done' ? 'done' : 'undone'
+                }`}
+              >
+                {item.episode}
+              </Typography>
               <div className='item_button_container'>
-                <Button className='item_button' variant='contained' color='primary' onClick={(e) => clickHandle(key, 'done')}>
-                  Done
-                </Button>
-                <Button className='item_button' variant='contained' color='secondary' onClick={(e) => clickHandle(key, 'delete')}>
+                {item.type === 'done' ? (
+                  <Button
+                    className='item_button'
+                    variant='contained'
+                    color='primary'
+                    onClick={(e) => clickHandle(key, 'undone')}
+                  >
+                    UnDone
+                  </Button>
+                ) : (
+                  <Button
+                    className='item_button'
+                    variant='contained'
+                    color='primary'
+                    onClick={(e) => clickHandle(key, 'done')}
+                  >
+                    Done
+                  </Button>
+                )}
+                <Button
+                  className='item_button'
+                  variant='contained'
+                  color='secondary'
+                  onClick={(e) => clickHandle(key, 'delete')}
+                >
                   Delete
                 </Button>
               </div>
