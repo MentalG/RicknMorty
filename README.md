@@ -1,6 +1,6 @@
 ## Pecode software Test
 
-To start the front-end part of this project, after cloning you should run:
+To start this project, after cloning you should run:
 
 ### `npm install`
 
