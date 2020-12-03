@@ -1,4 +1,4 @@
-## Pecode Test
+## Pecode software Test
 
 To start the front-end part of this project, after cloning you should run:
 
