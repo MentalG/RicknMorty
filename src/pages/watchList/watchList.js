@@ -55,7 +55,6 @@ const WatchList = (props) => {
       </form>
       <ul className='watchList_items_container'>
         {list?.map((item, key) => {
-          console.log(item);
           return (
             <li key={item.episode + key}>
               <Typography
